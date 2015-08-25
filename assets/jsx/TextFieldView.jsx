@@ -4,6 +4,7 @@ var TextFieldView = React.createClass({
       <div className="text-input">
         <label>{this.props.title}</label>
         <input type="text" onChange={this.props.onChange} />
+        <p>{this.props.info}</p>
       </div>
     );
   }

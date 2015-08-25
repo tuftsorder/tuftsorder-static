@@ -98,6 +98,9 @@ var BurritoController = React.createClass({
     var chipList = $(event.target).val();
     this.setState({chips: chipList});
   },
+  handleAddressChange: function(event) {
+    this.setState({address: event.target.value});
+  },
   handleVenmoChange: function(event) {
     this.setState({venmo: event.target.value});
   },
@@ -136,11 +139,17 @@ var BurritoController = React.createClass({
         <PriceIndicator
           title="Delivery Charge"
           price={this.calculateDeliveryCharge()} />
+        <br />
         <PriceIndicator
           title="Final Price"
           price={this.calculatePrice()} />
+        <TextAreaView
+          title="Address"
+          sample="Please provide specific info, like 'Houston 331'"
+          onChange={this.handleAddressChange} />
         <TextFieldView
           title="Venmo Username"
+          info="Please pay Maxwell-Bernstein"
           onChange={this.handleVenmoChange} />
         <ButtonView
           onClick={this.handleSubmit}

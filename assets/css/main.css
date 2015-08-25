@@ -1,6 +1,9 @@
+div label {
+  display: block;
+}
 div.item-selector label {
   list-style-type: none;
-  padding-bottom: 0px;
+  padding-top: 10px;
   margin: 0px;
   display: block;
 }
@@ -9,7 +12,7 @@ div.price-indicator {
 }
 div.order-form {
   text-align: left;
-  width: 250px;
+  width: 400px;
 }
 div.price-indicator {
   display: inline-block;

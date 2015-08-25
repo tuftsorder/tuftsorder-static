@@ -5,6 +5,10 @@ var OrderController = React.createClass({
       return false;
     }
 
+    if (typeof order.address === "undefined") {
+      return false;
+    }
+
     return true;
   },
   handleSubmit: function(order, total) {
