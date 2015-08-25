@@ -4,6 +4,8 @@ var TextAreaView = React.createClass({
       <div className="text-input">
         <label>{this.props.title}</label>
         <textarea
+          rows="3"
+          cols="40"
           onChange={this.props.onChange}
           defaultValue={this.props.sample}></textarea>
       </div>

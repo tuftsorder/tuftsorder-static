@@ -6,7 +6,8 @@ var MultipleItemSelector = React.createClass({
         <select
           multiple="multiple"
           defaultValue={this.props.defaultValue}
-          onChange={this.props.onChange}>
+          onChange={this.props.onChange}
+          size={this.props.items.length}>
           {this.props.items.map(function(item) {
             return (
               <option key={item.name} value={item.name}>
