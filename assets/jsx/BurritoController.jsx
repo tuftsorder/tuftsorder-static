@@ -86,26 +86,33 @@ var BurritoController = React.createClass({
   },
   handleFillingChange: function(event) {
     this.setState({filling: event.target.value});
+    ga('send', 'filling_change');
   },
   handleExtraChange: function(event) {
     this.setState({extra: event.target.checked});
+    ga('send', 'extra_change');
   },
   handleToppingChange: function(event) {
     var toppingList = $(event.target).val();
     this.setState({toppings: toppingList});
+    ga('send', 'topping_change');
   },
   handleChipChange: function(event) {
     var chipList = $(event.target).val();
     this.setState({chips: chipList});
+    ga('send', 'chip_change');
   },
   handleAddressChange: function(event) {
     this.setState({address: event.target.value});
+    ga('send', 'address_change');
   },
   handleVenmoChange: function(event) {
     this.setState({venmo: event.target.value});
+    ga('send', 'venmo_change');
   },
   handleSubmit: function() {
     var total = this.calculatePrice();
+    ga('send', 'submit');
     this.props.onSubmit.bind(null, this.state, total)();
   },
   render: function() {
