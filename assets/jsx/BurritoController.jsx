@@ -98,13 +98,20 @@ var BurritoController = React.createClass({
   handleBeansChange: function(event) {
     ga('send', 'event', 'dropdown', 'beans_change', 'food change');
   },
+  processArr: function(arr) {
+    if (arr == null) {
+      return [];
+    }
+
+    return arr;
+  },
   handleToppingChange: function(event) {
-    var toppingList = $(event.target).val();
+    var toppingList = this.processArr($(event.target).val());
     this.setState({toppings: toppingList});
     ga('send', 'event', 'multiselect', 'topping_change', 'food change');
   },
   handleChipChange: function(event) {
-    var chipList = $(event.target).val();
+    var chipList = this.processArr($(event.target).val());
     this.setState({chips: chipList});
     ga('send', 'event', 'multiselect', 'chip_change', 'food change');
   },
