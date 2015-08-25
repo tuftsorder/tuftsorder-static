@@ -86,39 +86,39 @@ var BurritoController = React.createClass({
   },
   handleFillingChange: function(event) {
     this.setState({filling: event.target.value});
-    ga('send', 'filling_change');
+    ga('send', 'event', 'dropdown', 'filling_change', 'food change');
   },
   handleExtraChange: function(event) {
     this.setState({extra: event.target.checked});
-    ga('send', 'extra_change');
+    ga('send', 'event', 'checkbox', 'extra_change', 'food change');
   },
   handleRiceChange: function(event) {
-    ga('send', 'rice_change');
+    ga('send', 'event', 'dropdown', 'rice_change', 'food change');
   },
   handleBeansChange: function(event) {
-    ga('send', 'beans_change');
+    ga('send', 'event', 'dropdown', 'beans_change', 'food change');
   },
   handleToppingChange: function(event) {
     var toppingList = $(event.target).val();
     this.setState({toppings: toppingList});
-    ga('send', 'topping_change');
+    ga('send', 'event', 'multiselect', 'topping_change', 'food change');
   },
   handleChipChange: function(event) {
     var chipList = $(event.target).val();
     this.setState({chips: chipList});
-    ga('send', 'chip_change');
+    ga('send', 'event', 'multiselect', 'chip_change', 'food change');
   },
   handleAddressChange: function(event) {
     this.setState({address: event.target.value});
-    ga('send', 'address_change');
+    ga('send', 'event', 'textarea', 'address_change', 'address change');
   },
   handleVenmoChange: function(event) {
     this.setState({venmo: event.target.value});
-    ga('send', 'venmo_change');
+    ga('send', 'event', 'textfield', 'venmo_change', 'venmo change');
   },
   handleSubmit: function() {
     var total = this.calculatePrice();
-    ga('send', 'submit');
+    ga('send', 'event', 'button', 'submit', 'form submit');
     this.props.onSubmit.bind(null, this.state, total)();
   },
   render: function() {
