@@ -92,6 +92,12 @@ var BurritoController = React.createClass({
     this.setState({extra: event.target.checked});
     ga('send', 'extra_change');
   },
+  handleRiceChange: function(event) {
+    ga('send', 'rice_change');
+  },
+  handleBeansChange: function(event) {
+    ga('send', 'beans_change');
+  },
   handleToppingChange: function(event) {
     var toppingList = $(event.target).val();
     this.setState({toppings: toppingList});
@@ -130,11 +136,13 @@ var BurritoController = React.createClass({
         <ItemSelector
           title="Pick your Rice"
           items={this.riceOptions}
-          defaultValue={this.state.rice} />
+          defaultValue={this.state.rice}
+          onChange={this.handleRiceChange} />
         <ItemSelector
           title="Pick your Beans"
           items={this.beanOptions}
-          defaultValue={this.state.beans} />
+          defaultValue={this.state.beans}
+          onChange={this.handleBeansChange} />
         <MultipleItemSelector
           title="Pick your Toppings"
           items={this.toppingOptions}
