@@ -7,7 +7,7 @@ var TextAreaView = React.createClass({
           rows="3"
           cols="40"
           onChange={this.props.onChange}
-          defaultValue={this.props.sample}></textarea>
+          placeholder={this.props.placeholder}></textarea>
       </div>
     );
   }

@@ -160,7 +160,7 @@ var BurritoController = React.createClass({
           price={this.calculatePrice()} />
         <TextAreaView
           title="Address"
-          sample="Please provide specific info, like 'Houston 331'"
+          placeholder="Please provide specific info, like 'Houston 331'"
           onChange={this.handleAddressChange} />
         <TextFieldView
           title="Venmo Username"
