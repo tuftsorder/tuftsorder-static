@@ -15,17 +15,15 @@ var OrderController = React.createClass({
     var isValid = this.validate(order);
 
     if (isValid) {
-      $.ajax({
-        url: this.submitUrl,
-        dataType: 'json',
-        type: 'POST',
-        data: order,
-        success: function() {
-          console.log("Success!");
+      var orderObject = new Order();
+      orderObject.save(order, {
+        success: function(orderObject) {
+          alert("Success! Please make sure to Venmo Maxwell-Bernstein "+
+                "and keep an eye out for your food!")
         },
-        error: function() {
-          console.log("Error!");
-        },
+        error: function(orderObject, error) {
+          alert("Something bad happened :( Try again later.");
+        }
       });
     }
     else {

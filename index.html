@@ -20,6 +20,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.5.0.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -41,6 +42,11 @@
       <p>&copy; Maxwell Bernstein and Andrew Hoiberg 2015</p>
     </footer>
   </div>
+  <script type="text/javascript">
+    Parse.initialize("WcH4sua2wArpDy4NT8PbIF8dw2UnGjPGOExAh5lg",
+                     "hThTTZGuc2m0BAOr5A57UvZBLt9LAKXbK9oXtQuk");
+    var Order = Parse.Object.extend("Order");
+  </script>
   <script type="text/jsx" src="/assets/jsx/PriceIndicator.jsx"></script>
   <script type="text/jsx" src="/assets/jsx/ItemSelector.jsx"></script>
   <script type="text/jsx" src="/assets/jsx/MultipleItemSelector.jsx"></script>
