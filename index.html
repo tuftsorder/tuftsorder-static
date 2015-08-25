@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Jumburrito</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-    <script src="/jquery.min.js"></script>
-    <style type="text/css">
-     div.item-selector label {
-       list-style-type: none;
-       padding-bottom: 0px;
-       margin: 0px;
-       display: block;
-     }
-     div.price-indicator {
-       display: inline-block;
-     }
-     div.order-form {
-       border: 1px solid black;
-       max-width: 250px;
-     }
-     div.price-indicator {
-       display: inline-block;
-     }
-     div.button-view {
-       display: block;
-     }
-    </style>
-  </head>
-  <body>
-    <div id="content"></div>
-    <script type="text/jsx" src="PriceIndicator.jsx"></script>
-    <script type="text/jsx" src="ItemSelector.jsx"></script>
-    <script type="text/jsx" src="MultipleItemSelector.jsx"></script>
-    <script type="text/jsx" src="CheckBox.jsx"></script>
-    <script type="text/jsx" src="BurritoController.jsx"></script>
-    <script type="text/jsx" src="TextFieldView.jsx"></script>
-    <script type="text/jsx" src="OrderController.jsx"></script>
-    <script type="text/jsx" src="ButtonView.jsx"></script>
-    <script type="text/jsx" src="index.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Jumburrito</title>
+  <script src="/assets/js/react.js"></script>
+  <script src="/assets/js/JSXTransformer.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+  <!-- Jumbotron CSS -->
+  <link rel="stylesheet" href="/assets/css/jumbotron-narrow.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="/bootstrap-theme.min.css"> -->
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/assets/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">Jumburrito</h3>
+    </div>
+    <div class="jumbotron">
+      <h1>Order now!</h1>
+      <p class="lead">First 20 people get a burrito...</p>
+      <div id="content"></div>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; Maxwell Bernstein and Andrew Hoiberg 2015</p>
+    </footer>
+  </div>
+  <script type="text/jsx" src="/assets/jsx/PriceIndicator.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/ItemSelector.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/MultipleItemSelector.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/CheckBox.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/BurritoController.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/TextFieldView.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/OrderController.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/ButtonView.jsx"></script>
+  <script type="text/jsx" src="/assets/jsx/index.jsx"></script>
+</body>
 </html>
