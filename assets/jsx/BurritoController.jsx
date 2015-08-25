@@ -27,6 +27,14 @@ var BurritoController = React.createClass({
     {name: "Guacamole", price: 2.05},
     {name: "Lettuce", price: 0.0},
   ],
+  chipOptions: [
+    {name: "Chips & Guacamole", price: 3.40},
+    {name: "Chips", price: 1.35},
+    {name: "Chips & Fresh Tomato Salsa (mild)", price: 2.10},
+    {name: "Chips & Roasted Chili-Corn Salsa (medium)", price: 2.10},
+    {name: "Chips & Tomatillo-Green Chili Salsa (medium-hot)", price: 2.10},
+    {name: "Chips & Tomatillo-Red Chili Salsa (hot)", price: 2.10},
+  ],
   getInitialState: function() {
     return {
       filling: this.fillingOptions[0].name,
@@ -34,6 +42,7 @@ var BurritoController = React.createClass({
       rice: this.riceOptions[1].name,
       beans: this.beanOptions[1].name,
       toppings: [],
+      chips: [],
     };
   },
   lookupPrice: function(list, name) {
@@ -44,6 +53,13 @@ var BurritoController = React.createClass({
       }
     }
     return null;
+  },
+  calculateListPrice: function(priceList, options) {
+    var this_ = this;
+    var prices = priceList.map(function (item) {
+      return this_.lookupPrice(options, item);
+    });
+    return prices.reduce(function(pv, cv) { return pv + cv; }, 0); // sum
   },
   calculateToppingPrice: function() {
     var this_ = this;
@@ -58,9 +74,12 @@ var BurritoController = React.createClass({
     var extraPrice = this.state.extra ?
                        this.extraOption.price :
                        0.0;
-    var toppingPrice = this.calculateToppingPrice();
+    var toppingPrice = this.calculateListPrice(this.state.toppings,
+                                               this.toppingOptions);
+    var chipPrice = this.calculateListPrice(this.state.chips,
+                                               this.chipOptions);
     var deliveryCharge = this.calculateDeliveryCharge();
-    return fillingPrice + extraPrice + toppingPrice + deliveryCharge;
+    return fillingPrice + extraPrice + toppingPrice + chipPrice + deliveryCharge;
   },
   calculateDeliveryCharge: function() {
     return 2;
@@ -74,6 +93,10 @@ var BurritoController = React.createClass({
   handleToppingChange: function(event) {
     var toppingList = $(event.target).val();
     this.setState({toppings: toppingList});
+  },
+  handleChipChange: function(event) {
+    var chipList = $(event.target).val();
+    this.setState({chips: chipList});
   },
   handleVenmoChange: function(event) {
     this.setState({venmo: event.target.value});
@@ -106,6 +129,10 @@ var BurritoController = React.createClass({
           title="Pick your Toppings"
           items={this.toppingOptions}
           onChange={this.handleToppingChange} />
+        <MultipleItemSelector
+          title="Pick your Extras"
+          items={this.chipOptions}
+          onChange={this.handleChipChange} />
         <PriceIndicator
           title="Delivery Charge"
           price={this.calculateDeliveryCharge()} />
