@@ -119,6 +119,10 @@ var BurritoController = React.createClass({
     this.setState({address: event.target.value});
     ga('send', 'event', 'textarea', 'address_change', 'address change');
   },
+  handlePhoneChange: function(event) {
+    this.setState({phone: event.target.value});
+    ga('send', 'event', 'textfield', 'phone_change', 'phone change')
+  },
   handleVenmoChange: function(event) {
     this.setState({venmo: event.target.value});
     ga('send', 'event', 'textfield', 'venmo_change', 'venmo change');
@@ -169,6 +173,9 @@ var BurritoController = React.createClass({
           title="Address"
           placeholder="Please provide specific info, like 'Houston 331'"
           onChange={this.handleAddressChange} />
+        <TextFieldView
+          title="Phone number"
+          onChange={this.handlePhoneChange} />
         <TextFieldView
           title="Venmo Username"
           info="Please pay Maxwell-Bernstein"

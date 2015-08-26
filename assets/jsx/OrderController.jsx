@@ -9,6 +9,10 @@ var OrderController = React.createClass({
       return false;
     }
 
+    if (typeof order.phone === "undefined") {
+      return false;
+    }
+
     return true;
   },
   handleSubmit: function(order, total) {
