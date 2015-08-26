@@ -68,7 +68,9 @@ var BurritoController = React.createClass({
     });
     return prices.reduce(function(pv, cv) { return pv + cv; }, 0); // sum
   },
-  calculatePrice: function() {
+  salesTax: 0.0625,
+  deliveryFee: 2.00,
+  calculateSubTotal: function() {
     var fillingPrice = this.lookupPrice(this.fillingOptions,
                                         this.state.filling);
     var extraPrice = this.state.extra ?
@@ -78,11 +80,13 @@ var BurritoController = React.createClass({
                                                this.toppingOptions);
     var chipPrice = this.calculateListPrice(this.state.chips,
                                                this.chipOptions);
-    var deliveryCharge = this.calculateDeliveryCharge();
-    return fillingPrice + extraPrice + toppingPrice + chipPrice + deliveryCharge;
+    return fillingPrice + extraPrice + toppingPrice + chipPrice;
   },
-  calculateDeliveryCharge: function() {
-    return 2;
+  calculateSalesTax: function() {
+    return this.calculateSubTotal() * this.salesTax;
+  },
+  calculatePrice: function() {
+    return this.calculateSubTotal() + this.calculateSalesTax()  + this.deliveryFee;
   },
   handleFillingChange: function(event) {
     this.setState({filling: event.target.value});
@@ -162,9 +166,17 @@ var BurritoController = React.createClass({
           title="Pick your Extras"
           items={this.chipOptions}
           onChange={this.handleChipChange} />
+	<PriceIndicator
+	  title="Subtotal"
+	  price={this.calculateSubTotal()} />
+	<br />
         <PriceIndicator
-          title="Delivery Charge"
-          price={this.calculateDeliveryCharge()} />
+          title="Sales tax"
+          price={this.calculateSalesTax()} />
+        <br />
+	<PriceIndicator
+          title="Delivery Fee"
+          price={this.deliveryFee} />
         <br />
         <PriceIndicator
           title="Final Price"
