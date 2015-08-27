@@ -1,15 +1,18 @@
 var OrderController = React.createClass({
   submitUrl: '/order',
+  isBlank: function(field) {
+    return field == "" || typeof field === "undefined";
+  },
   validate: function(order) {
-    if (typeof order.venmo === "undefined") {
+    if (this.isBlank(order.venmo)) {
       return false;
     }
 
-    if (typeof order.address === "undefined") {
+    if (this.isBlank(order.address)) {
       return false;
     }
 
-    if (typeof order.phone === "undefined") {
+    if (this.isBlank(order.phone)) {
       return false;
     }
 
