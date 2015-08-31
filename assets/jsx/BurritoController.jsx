@@ -2,6 +2,9 @@ var BurritoController = React.createClass({
   fillingOptions: [
     {name: "Chicken", price: 6.80},
     {name: "Steak", price: 7.80},
+    {name: "Barbacoa", price: 7.80},
+    {name: "Carnitas", price: 7.25},
+    {name: "Sofritas", price: 6.80},
     {name: "Veggie", price: 6.80},
   ],
   extraOption:
@@ -79,7 +82,7 @@ var BurritoController = React.createClass({
     var toppingPrice = this.calculateListPrice(this.state.toppings,
                                                this.toppingOptions);
     var chipPrice = this.calculateListPrice(this.state.chips,
-                                               this.chipOptions);
+                                            this.chipOptions);
     return fillingPrice + extraPrice + toppingPrice + chipPrice;
   },
   calculateSalesTax: function() {
@@ -97,9 +100,11 @@ var BurritoController = React.createClass({
     ga('send', 'event', 'checkbox', 'extra_change', 'food change');
   },
   handleRiceChange: function(event) {
+    this.setState({rice: event.target.value});
     ga('send', 'event', 'dropdown', 'rice_change', 'food change');
   },
   handleBeansChange: function(event) {
+    this.setState({beans: event.target.value});
     ga('send', 'event', 'dropdown', 'beans_change', 'food change');
   },
   processArr: function(arr) {
@@ -118,6 +123,10 @@ var BurritoController = React.createClass({
     var chipList = this.processArr($(event.target).val());
     this.setState({chips: chipList});
     ga('send', 'event', 'multiselect', 'chip_change', 'food change');
+  },
+  handleSpecialInstructionChange: function(event) {
+    this.setState({instructions: event.target.value})
+    ga('send', 'event', 'textarea', 'instructions_change', 'special instructions change');
   },
   handleAddressChange: function(event) {
     this.setState({address: event.target.value});
@@ -166,15 +175,19 @@ var BurritoController = React.createClass({
           title="Pick your Extras"
           items={this.chipOptions}
           onChange={this.handleChipChange} />
-	<PriceIndicator
-	  title="Subtotal"
-	  price={this.calculateSubTotal()} />
-	<br />
+        <TextAreaView
+          title="Special Instructions"
+          placeholder="Do you have any special instructions? If they incur extra cost, they will not be honored."
+          onChange={this.handleSpecialInstructionChange} />
+        <PriceIndicator
+          title="Subtotal"
+          price={this.calculateSubTotal()} />
+        <br />
         <PriceIndicator
           title="Sales tax"
           price={this.calculateSalesTax()} />
         <br />
-	<PriceIndicator
+        <PriceIndicator
           title="Delivery Fee"
           price={this.deliveryFee} />
         <br />
