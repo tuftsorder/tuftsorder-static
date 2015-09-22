@@ -170,10 +170,12 @@ var BurritoController = React.createClass({
         <MultipleItemSelector
           title="Pick your Toppings"
           items={this.toppingOptions}
+          helpText="To deselect items, Command/Control-click. Same for selecting multiple items."
           onChange={this.handleToppingChange} />
         <MultipleItemSelector
           title="Pick your Extras"
           items={this.chipOptions}
+          helpText="To deselect items, Command/Control-click. Same for selecting multiple items."
           onChange={this.handleChipChange} />
         <TextAreaView
           title="Special Instructions"

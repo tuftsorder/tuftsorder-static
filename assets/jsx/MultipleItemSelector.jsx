@@ -3,6 +3,7 @@ var MultipleItemSelector = React.createClass({
     return (
       <div className="item-selector">
         <label>{this.props.title}</label>
+        <div>{this.props.helpText}</div>
         <select
           multiple="multiple"
           defaultValue={this.props.defaultValue}
