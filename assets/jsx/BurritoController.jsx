@@ -22,7 +22,7 @@ var BurritoController = React.createClass({
   toppingOptions: [
     {name: "Fajita Veggies", price: 0.0},
     {name: "Fresh Tomato Salsa", price: 0.0},
-    {name: "Roasted Chili-Corn Salsa (mild)", price: 0.0},
+    {name: "Roasted Chili-Corn Salsa (medium)", price: 0.0},
     {name: "Tomatillo-Green Chili Salsa (medium)", price: 0.0},
     {name: "Tomatillo-Red Chili Salsa (hot)", price: 0.0},
     {name: "Sour Cream", price: 0.0},
