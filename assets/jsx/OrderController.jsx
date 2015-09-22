@@ -26,7 +26,9 @@ var OrderController = React.createClass({
       orderObject.save(order, {
         success: function(orderObject) {
           alert("Success! Please make sure to Venmo Maxwell-Bernstein "+
-                "and keep an eye out for your food!")
+                "and keep an eye out for your food!");
+          window.location.replace("http://tuftsorder.bernsteinbear.com/"+
+                "done.html");
         },
         error: function(orderObject, error) {
           alert("Something bad happened :( Try again later.");
