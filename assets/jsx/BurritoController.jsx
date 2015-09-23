@@ -71,7 +71,7 @@ var BurritoController = React.createClass({
     });
     return prices.reduce(function(pv, cv) { return pv + cv; }, 0); // sum
   },
-  salesTax: 0.0625,
+  salesTax: 0.07,
   deliveryFee: 2.00,
   calculateSubTotal: function() {
     var fillingPrice = this.lookupPrice(this.fillingOptions,
