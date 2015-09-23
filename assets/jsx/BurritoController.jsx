@@ -143,9 +143,7 @@ var BurritoController = React.createClass({
   handleSubmit: function() {
     var total = this.calculatePrice();
     ga('send', 'event', 'button', 'submit', 'form submit');
-    var statePlusTotal = this.state;
-    statePlusTotal.totalGuess = total;
-    this.props.onSubmit.bind(null, statePlusTotal, total)();
+    this.props.onSubmit.bind(null, this.state, total)();
   },
   render: function() {
     return (

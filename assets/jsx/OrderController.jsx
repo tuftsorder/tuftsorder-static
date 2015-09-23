@@ -23,6 +23,7 @@ var OrderController = React.createClass({
 
     if (isValid) {
       var orderObject = new Order();
+      orderObject.totalGuess = total;
       orderObject.save(order, {
         success: function(orderObject) {
           alert("Success! Please make sure to Venmo Maxwell-Bernstein "+
